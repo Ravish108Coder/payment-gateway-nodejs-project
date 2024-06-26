@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://media.istockphoto.com/id/1339686801/photo/cloud-computing.jpg?s=2048x2048&w=is&k=20&c=NKi1-84KT0XpLKfN1-a6XX7Lp_mS54yz6n8KIrkCrko=');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+        }
+
+        .content {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 600px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .header {
+            width: 100%;
+            /* background-color: rgba(255, 255, 255, 0.8); Example background color */
+            /* padding: 10px 0; */
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000; /* Ensure header is on top of other content */
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            /* margin-bottom: 20px; */
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        p.username {
+            font-size: 1.4rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+            .content {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <%- include('partials/header', { user: user }) %>
+    </header>
+    <div class="content">
+        <h1>Welcome to the Home Page</h1>
+
+        <% if (user) { %>
+            <p class="username"><%= user.username %>, your payment is already done!</p>
+        <% } else { %>
+            <p style="background-color: red; padding: 5px; border-radius: 5px; padding-inline: 10px;">Please sign up or login to continue.</p>
+        <% } %>
+    </div>
+</body>
+</html>
